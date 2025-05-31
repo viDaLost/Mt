@@ -2,24 +2,26 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Матрёшки</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="main-menu">
-    <h1>Матрёшки</h1>
-    <button onclick="startGame()">Начать игру</button>
-    <button onclick="location.href='rules.html'">Правила игры</button>
-    <button onclick="toggleLanguage()">🌐 Язык</button>
-    <div class="floating-dolls"></div>
+  <div id="main-menu" class="screen">
+    <h1 data-i18n="title">Матрёшки</h1>
+    <div id="floating-matryoshkas"></div>
+
+    <button id="start-btn" data-i18n="startGame">Начать игру</button>
+    <button id="rules-btn" data-i18n="rules">Правила игры</button>
+    <button id="lang-btn" data-i18n="language">Язык</button>
   </div>
 
-  <div id="game" style="display: none;">
-    <div id="opponent-pieces" class="pieces"></div>
-    <div id="status">Ходит: Игрок 1</div>
-    <div id="board"></div>
-    <div id="player-pieces" class="pieces"></div>
+  <div id="game" class="screen" style="display:none;">
+    <div id="opponent-pieces" class="pieces-row"></div>
+    <div id="status" class="status"></div>
+    <div id="board" class="board"></div>
+    <div id="player-pieces" class="pieces-row"></div>
+    <button id="reset-btn" style="margin-top:10px;">Restart</button>
   </div>
 
   <script src="lang.js"></script>
