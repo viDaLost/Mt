@@ -7,39 +7,42 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1 id="game-title">Матрёшки</h1>
-      <button id="rules-btn">❓</button>
-      <select id="lang-select">
-        <option value="ru" selected>🇷🇺</option>
-        <option value="en">🇬🇧</option>
-      </select>
-    </header>
 
-    <div id="board"></div>
-
-    <div id="player-info">
-      <div id="current-player"></div>
-      <div id="available-pieces"></div>
-    </div>
-
-    <div id="modal" class="hidden">
-      <div class="modal-content">
-        <span id="close-modal">&times;</span>
-        <h2 id="rules-title">Правила</h2>
-        <ul id="rules-list">
-          <li>Игроки ходят по очереди.</li>
-          <li>Фигуру можно ставить на пустую клетку или поверх меньшей фигуры (включая вражеские).</li>
-          <li>Нельзя ставить фигуру на такую же или большую по размеру.</li>
-          <li>Каждая фигура используется только один раз.</li>
-          <li>Победа — когда игрок выстраивает три свои фигуры в ряд (по цвету или метке).</li>
-          <li>Ничья — если все фигуры исчерпаны, а победитель не определён.</li>
-        </ul>
-      </div>
+  <!-- Главное меню -->
+  <div id="main-menu" class="menu">
+    <h1 class="game-title">Матрёшки</h1>
+    <button id="btn-start">Начать игру</button>
+    <button id="btn-rules">Правила</button>
+    <button id="btn-lang">🇷🇺 / 🇬🇧</button>
+    <div class="floating-matryoshki">
+      <span>🧺</span><span>🪃</span><span>🧸</span><span>🎀</span>
     </div>
   </div>
 
-  <script type="module" src="script.js"></script>
+  <!-- Модальное окно с правилами -->
+  <div id="modal-rules" class="modal hidden">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Правила игры</h2>
+      <ul>
+        <li>Игроки ходят по очереди.</li>
+        <li>Фигуру можно ставить на пустую клетку или поверх меньшей фигуры (включая вражеские).</li>
+        <li>Нельзя ставить фигуру на такую же или большую по размеру.</li>
+        <li>Каждая фигура используется только один раз.</li>
+        <li>Победа — когда игрок выстраивает три свои фигуры в ряд (по цвету или метке).</li>
+        <li>Ничья — если все фигуры исчерпаны, а победитель не определён.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Игровое поле -->
+  <div id="game-screen" class="hidden screen">
+    <div id="enemy-pieces" class="piece-row"></div>
+    <div id="board"></div>
+    <div id="player-pieces" class="piece-row"></div>
+    <div id="turn-info"></div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
