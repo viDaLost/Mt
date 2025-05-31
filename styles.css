@@ -1,85 +1,72 @@
 :root {
-  --bg-color: #f5f5f5;
   --accent-color: #e91e63;
-  --text-color: #333;
+  --bg-gradient: linear-gradient(135deg, #f8cdda, #d1e7dd);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  background: var(--bg-gradient);
+  color: #333;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
+  align-items: center;
   padding: 1em;
 }
 
-.container {
-  max-width: 480px;
+.menu {
+  text-align: center;
+  max-width: 400px;
   width: 100%;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#rules-btn, #lang-select {
-  background: var(--accent-color);
-  border: none;
-  color: white;
-  padding: 0.4em 0.6em;
-  font-size: 1.2em;
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-#lang-select {
-  border-radius: 4px;
-  padding: 0.4em;
-  font-size: 1em;
-}
-
-#board {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 5px;
-  margin-top: 1em;
-}
-
-.cell {
-  aspect-ratio: 1 / 1;
-  border: 2px solid #ccc;
+.game-title {
+  font-size: 2.5em;
+  margin-bottom: 1em;
   position: relative;
-  background: white;
+  z-index: 1;
+}
+
+.floating-matryoshki {
+  position: absolute;
+  top: 20%;
+  right: 10%;
+  font-size: 2em;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  animation: floatUp 10s infinite ease-in-out;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(-20px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 0.5; }
+}
+
+.menu button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 15px;
+  font-size: 1em;
+  border-radius: 12px;
+  border: none;
+  background: #fff;
+  color: var(--accent-color);
   cursor: pointer;
+  transition: transform 0.2s;
 }
 
-svg.matryoshka {
-  height: 80%;
-  width: auto;
+.menu button:hover {
+  transform: scale(1.05);
 }
 
-#player-info {
-  margin-top: 1em;
-}
-
-#available-pieces svg {
-  height: 24px;
-  margin-right: 4px;
-}
-
-.hidden {
-  display: none;
-}
-
-#modal {
+.modal {
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
@@ -91,18 +78,67 @@ svg.matryoshka {
 
 .modal-content {
   background: white;
-  padding: 1em;
-  border-radius: 8px;
-  position: relative;
+  padding: 20px;
+  border-radius: 10px;
   max-width: 90%;
-  max-height: 90%;
-  overflow-y: auto;
 }
 
-#close-modal {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+.close {
+  float: right;
   font-size: 1.5em;
   cursor: pointer;
+}
+
+.screen {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.piece-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.piece {
+  width: 40px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.selected {
+  transform: scale(1.2);
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  gap: 5px;
+  margin: 10px;
+}
+
+.cell {
+  width: 80px;
+  height: 80px;
+  border: 2px solid #ccc;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+#turn-info {
+  margin-top: 10px;
+  font-weight: bold;
 }
