@@ -1,101 +1,153 @@
+* {
+  box-sizing: border-box;
+}
 body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #fceabb, #f8b500);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin: 0; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #7b4eff, #a36fff, #d094ff);
+  color: #fff;
   min-height: 100vh;
-  overflow: hidden;
-}
-
-#main-menu {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  height: 100vh;
-  position: relative;
+  align-items: center;
+  padding: 10px;
+  overflow-x: hidden;
+}
+.screen {
+  max-width: 480px;
+  width: 100%;
   text-align: center;
+  user-select: none;
+  position: relative;
 }
-
-#main-menu h1 {
+h1 {
   font-size: 3rem;
-  margin-bottom: 30px;
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 10px #c59cffaa;
+  position: relative;
+  z-index: 10;
 }
-
 button {
-  padding: 15px 25px;
+  display: block;
+  width: 80%;
+  max-width: 300px;
+  margin: 10px auto;
+  padding: 1rem;
   font-size: 1.2rem;
+  border-radius: 25px;
   border: none;
-  border-radius: 12px;
-  margin: 10px;
-  background: #8e44ad;
-  color: white;
+  background: linear-gradient(90deg, #6f4dbf, #af7eff);
+  color: #fff;
   cursor: pointer;
-  transition: background 0.3s;
+  box-shadow: 0 4px 8px #a277e3aa;
+  transition: background 0.3s ease;
+  user-select: none;
 }
 button:hover {
-  background: #732d91;
+  background: linear-gradient(90deg, #af7eff, #6f4dbf);
 }
 
-.floating-dolls {
+#floating-matryoshkas {
   position: absolute;
-  bottom: -50px;
-  width: 100%;
+  top: 50px;
+  left: 0;
+  right: 0;
+  height: 160px;
+  overflow: visible;
   pointer-events: none;
+  z-index: 5;
 }
-.floating-dolls::after {
-  content: '';
-  background-image: url("svg/purple_1.svg"), url("svg/black_2.svg"), url("svg/purple_3.svg");
-  background-repeat: no-repeat;
-  background-size: 64px;
+.floating-piece {
   position: absolute;
-  width: 100%;
-  height: 300px;
-  animation: floatUp 10s linear infinite;
+  bottom: 0;
+  opacity: 0.8;
+  animation: floatUp linear infinite;
+  filter: drop-shadow(0 0 2px #0008);
+  user-select: none;
 }
-
 @keyframes floatUp {
-  0% { transform: translateY(100%); opacity: 0; }
-  50% { opacity: 1; }
-  100% { transform: translateY(-100%); opacity: 0; }
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-80px);
+    opacity: 0;
+  }
 }
 
-#board {
+.board {
   display: grid;
-  grid-template-columns: repeat(3, 100px);
-  grid-template-rows: repeat(3, 100px);
-  gap: 5px;
-  margin: 20px auto;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  max-width: 360px;
+  margin: 0 auto;
+  user-select: none;
 }
 .cell {
-  background: white;
-  border: 2px solid #ccc;
+  background: #4e317b88;
+  border-radius: 12px;
+  aspect-ratio: 1/1;
   position: relative;
-}
-.cell img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.pieces {
+  cursor: pointer;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+.cell img {
+  max-width: 90%;
+  max-height: 90%;
+  animation: popIn 0.2s ease-out;
+  user-select: none;
+}
+@keyframes popIn {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.pieces-row {
+  display: flex;
+  justify-content: center;
+  margin: 12px 0;
   gap: 10px;
-  flex-wrap: wrap;
+  user-select: none;
 }
 .piece {
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.25s ease;
+  filter: drop-shadow(0 0 3px #0008);
+  border-radius: 12px;
 }
 .piece.selected {
-  transform: scale(1.2);
+  transform: scale(1.3);
+  filter: drop-shadow(0 0 8px #fff);
 }
 
-#status {
+.status {
   font-size: 1.2rem;
-  text-align: center;
-  margin: 10px;
+  margin: 6px 0;
+  text-shadow: 0 0 5px #0009;
+  min-height: 30px;
+}
+
+#reset-btn {
+  background: #bf4d4d;
+  box-shadow: 0 4px 8px #bf4d4daa;
+  font-weight: bold;
+}
+#reset-btn:hover {
+  background: #d96a6a;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2.4rem;
+  }
+  button {
+    font-size: 1rem;
+  }
 }
