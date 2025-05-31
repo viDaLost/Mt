@@ -1,48 +1,64 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Матрёшки</title>
-  <link rel="stylesheet" href="style.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Матрёшки</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Главное меню -->
-  <div id="main-menu" class="menu">
-    <h1 class="game-title">Матрёшки</h1>
-    <button id="btn-start">Начать игру</button>
-    <button id="btn-rules">Правила</button>
-    <button id="btn-lang">🇷🇺 / 🇬🇧</button>
-    <div class="floating-matryoshki">
-      <span>🧺</span><span>🪃</span><span>🧸</span><span>🎀</span>
+    <div id="main-menu" class="active">
+        <div class="background-decor">
+            <img src="svg/black_1.svg" class="deco-matryoshka d1">
+            <img src="svg/purple_2.svg" class="deco-matryoshka d2">
+            <img src="svg/black_3.svg" class="deco-matryoshka d3">
+            <img src="svg/purple_4.svg" class="deco-matryoshka d4">
+            <img src="svg/black_5.svg" class="deco-matryoshka d5">
+        </div>
+        <div class="menu-container">
+            <h1 class="game-title">Матрёшки</h1>
+            <button class="menu-button" id="start-game">Начать игру</button>
+            <button class="menu-button" id="show-rules">Правила</button>
+            <button class="menu-button" id="change-lang">EN/RU</button>
+        </div>
     </div>
-  </div>
 
-  <!-- Модальное окно с правилами -->
-  <div id="modal-rules" class="modal hidden">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Правила игры</h2>
-      <ul>
-        <li>Игроки ходят по очереди.</li>
-        <li>Фигуру можно ставить на пустую клетку или поверх меньшей фигуры (включая вражеские).</li>
-        <li>Нельзя ставить фигуру на такую же или большую по размеру.</li>
-        <li>Каждая фигура используется только один раз.</li>
-        <li>Победа — когда игрок выстраивает три свои фигуры в ряд (по цвету или метке).</li>
-        <li>Ничья — если все фигуры исчерпаны, а победитель не определён.</li>
-      </ul>
+    <div id="rules-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="rules-title">Правила игры</h2>
+            <p id="rules-text">"Матрёшки" — это улучшенная версия крестиков-ноликов на поле 3x3. У каждого из двух игроков есть по 5 фигур в виде матрёшек разного размера (от самой маленькой до самой большой).</p>
+            <ul>
+                <li>Игроки ходят по очереди.</li>
+                <li>Фигуру можно ставить на пустую клетку или поверх меньшей фигуры (включая вражеские).</li>
+                <li>Нельзя ставить фигуру на такую же или большую по размеру.</li>
+                <li>Каждая фигура используется только один раз.</li>
+                <li>Победа наступает, когда один из игроков выстраивает линию из трёх своих фигур (по цвету или метке) по горизонтали, вертикали или диагонали.</li>
+                <li>Ничья — если все фигуры исчерпаны, а победитель не определён.</li>
+            </ul>
+        </div>
     </div>
-  </div>
 
-  <!-- Игровое поле -->
-  <div id="game-screen" class="hidden screen">
-    <div id="enemy-pieces" class="piece-row"></div>
-    <div id="board"></div>
-    <div id="player-pieces" class="piece-row"></div>
-    <div id="turn-info"></div>
-  </div>
+    <div id="game-board" class="hidden">
+        <div class="player-info" id="current-player">Ход: Игрок 1</div>
+        <div class="opponent-pieces" id="opponent-pieces"></div>
+        <div class="board">
+            <!-- 9 ячеек -->
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+        </div>
+        <div class="player-pieces" id="player-pieces"></div>
+        <div class="status-message" id="status-message"></div>
+        <button class="restart-button hidden" id="restart-game">Начать заново</button>
+    </div>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
