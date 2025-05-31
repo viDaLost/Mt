@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Матрёшки</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 id="game-title">Матрёшки</h1>
+      <button id="rules-btn">❓</button>
+      <select id="lang-select">
+        <option value="ru" selected>🇷🇺</option>
+        <option value="en">🇬🇧</option>
+      </select>
+    </header>
+
+    <div id="board"></div>
+
+    <div id="player-info">
+      <div id="current-player"></div>
+      <div id="available-pieces"></div>
+    </div>
+
+    <div id="modal" class="hidden">
+      <div class="modal-content">
+        <span id="close-modal">&times;</span>
+        <h2 id="rules-title">Правила</h2>
+        <ul id="rules-list">
+          <li>Игроки ходят по очереди.</li>
+          <li>Фигуру можно ставить на пустую клетку или поверх меньшей фигуры (включая вражеские).</li>
+          <li>Нельзя ставить фигуру на такую же или большую по размеру.</li>
+          <li>Каждая фигура используется только один раз.</li>
+          <li>Победа — когда игрок выстраивает три свои фигуры в ряд (по цвету или метке).</li>
+          <li>Ничья — если все фигуры исчерпаны, а победитель не определён.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
