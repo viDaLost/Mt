@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Матрёшки</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Матрёшки</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://telegram.org/js/telegram-web-app.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-  <div id="main-menu" class="screen">
-    <h1 data-i18n="title">Матрёшки</h1>
-    <div id="floating-matryoshkas"></div>
-
-    <button id="start-btn" data-i18n="startGame">Начать игру</button>
-    <button id="rules-btn" data-i18n="rules">Правила игры</button>
-    <button id="lang-btn" data-i18n="language">Язык</button>
-  </div>
-
-  <div id="game" class="screen" style="display:none;">
-    <div id="opponent-pieces" class="pieces-row"></div>
-    <div id="status" class="status"></div>
-    <div id="board" class="board"></div>
-    <div id="player-pieces" class="pieces-row"></div>
-    <button id="reset-btn" style="margin-top:10px;">Restart</button>
-  </div>
-
-  <script src="lang.js"></script>
-  <script src="script.js"></script>
+    <div id="main-menu" class="menu">
+        <h1>Матрёшки</h1>
+        <button id="start-game-btn">Начать</button>
+        <button id="rules-btn">Правила</button>
+        <select id="language-switcher">
+            <option value="ru">RU</option>
+            <option value="en">EN</option>
+        </select>
+    </div>
+    <div id="game-container" class="hidden">
+        <header>
+            <h1>Матрёшки</h1>
+            <button id="back-to-menu">Назад</button>
+        </header>
+        <main>
+            <div id="game-board"></div>
+            <div id="controls">
+                <p id="current-player">Игрок: 1</p>
+                <div id="player-pieces"></div>
+            </div>
+        </main>
+    </div>
+    <div id="rules-modal" class="modal hidden">
+        <div class="modal-content">
+            <span id="close-modal">×</span>
+            <h2 id="rules-title">Правила</h2>
+            <p id="rules-text"></p>
+        </div>
+    </div>
 </body>
 </html>
