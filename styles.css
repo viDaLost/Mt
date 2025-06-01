@@ -39,7 +39,7 @@ body {
 }
 
 .hidden {
-    display: none;
+    display: none !important; /* Усиленный приоритет для скрытия */
 }
 
 /* Заголовок */
@@ -147,6 +147,7 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
 }
 
 .modal-content {
@@ -163,6 +164,12 @@ button:hover {
     right: 10px;
     cursor: pointer;
     font-size: 20px;
+    color: #333;
+    transition: color 0.2s ease;
+}
+
+#close-modal:hover {
+    color: #777;
 }
 
 /* Анимация размещения */
