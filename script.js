@@ -36,6 +36,10 @@ function getSvgPath(player, size) {
 
 // Инициализация
 document.addEventListener("DOMContentLoaded", () => {
+    // Убедимся, что модальное окно скрыто
+    document.getElementById("rules-modal").classList.add("hidden");
+
+    // Привязка событий
     document.getElementById("start-game-btn").addEventListener("click", startGame);
     document.getElementById("back-to-menu").addEventListener("click", backToMenu);
     document.getElementById("rules-btn").addEventListener("click", showRules);
@@ -47,7 +51,10 @@ document.addEventListener("DOMContentLoaded", () => {
         state.lang = e.target.value;
         updateUI();
     });
+
+    // Инициализация UI
     updateUI();
+
     // Telegram Web App
     if (window.Telegram?.WebApp) {
         window.Telegram.WebApp.ready();
